@@ -1,5 +1,8 @@
+<h1>Rock &amp; Roll<small> with Ember.js</small></h1>
+
 <ul>
-  {{#each songs as |song|}}
-    <li>{{song.title}} by {{song.band}} ({{song.rating}})</li>
-  {{/each}}
+  <li>{{link-to "Bands" "bands"}}</li>
+  <li>{{link-to "Songs" "songs"}}</li>
 </ul>
+
+{{outlet}}
