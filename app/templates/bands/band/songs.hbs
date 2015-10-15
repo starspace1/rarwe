@@ -1,7 +1,10 @@
-<ul>
-  {{#each model.songs as |song|}}
-    <li>
-      {{song.title}} | {{song.rating}}
-    </li>
-  {{/each}}
-</ul>
+<div class="row">
+  <ul class="list-group songs">
+    {{#each model.songs as |song|}}
+      <li class="list-group-item song">
+        {{song.title}}
+        <span class="rating pull-right">{{song.rating}}</span>
+      </li>
+    {{/each}}
+  </ul>
+</div>
