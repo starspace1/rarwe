@@ -2,9 +2,14 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   title: '',
+  songCreationStarted: false,
 
   isAddButtonDisabled: Ember.computed('title', function() {
     return Ember.isEmpty(this.get('title'));
+  }),
+
+  canCreateSong: Ember.computed('songCreationStarted', 'model.songs.length', function() {
+    return this.get('songCreationStarted') || this.get('model.songs.length');
   }),
 
   actions: {
@@ -12,6 +17,10 @@ export default Ember.Controller.extend({
       var song = params.item;
       var rating = params.rating;
       song.set('rating', rating);
+    },
+
+    enableSongCreation: function() {
+      this.set('songCreationStarted', true);
     }
   }
 });
