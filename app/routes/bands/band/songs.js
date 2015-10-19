@@ -20,7 +20,7 @@ export default Ember.Route.extend({
       });
       song.save().then(function () {
         controller.set('title', '');
-      })
+      });
     }
   }
 });
