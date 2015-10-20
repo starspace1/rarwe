@@ -1,6 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  queryParams: {
+    sortBy: 'sort',
+    searchTerm: 's'
+  },
+  sortBy: 'ratingDesc',
+  searchTerm: '',
+
   title: '',
   songCreationStarted: false,
 
@@ -11,8 +18,6 @@ export default Ember.Controller.extend({
   canCreateSong: Ember.computed('songCreationStarted', 'model.songs.length', function() {
     return this.get('songCreationStarted') || this.get('model.songs.length');
   }),
-
-  sortBy: 'ratingDesc',
 
   sortProperties: Ember.computed('sortBy', function() {
     var options = {
@@ -25,8 +30,6 @@ export default Ember.Controller.extend({
   }),
 
   sortedSongs: Ember.computed.sort('matchingSongs', 'sortProperties'),
-
-  searchTerm: '',
 
   matchingSongs: Ember.computed('model.songs.@each.title', 'searchTerm', function() {
     var searchTerm = this.get('searchTerm').toLowerCase();
